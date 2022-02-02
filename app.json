@@ -1,0 +1,58 @@
+{
+    "name": "CERO",
+    "description": "CERO is an play-to-earn RPG game (bot) for discord.",
+    "keywords": [
+        "Heroku",
+        "cero",
+        "CERO-RPG",
+        "Discord Bot",
+        "Entertainment",
+        "RPG",
+        "Moderation",
+        "SajawalFareedi",
+        "JavaScript",
+        "Selfhosting"
+    ],
+    "repository": "https://github.com/SajawalFareedi/discord-bot",
+    "addons": [
+        {
+            "plan": "mongolab:sandbox"
+        }
+    ],
+    "env": {
+        "DISCORD_BOT_LOGIN_TOKEN": {
+            "description": "Get your BOT TOKEN from https://discordapp.com/developers/applications/.",
+            "required": true
+        },
+        "DISCORD_BOT_OPERATORS_ID": {
+            "description": "Specifies which users can use the system commands of cero-RPG-Bot. You can add multiple by doing: <userid>, <seconduserid>.",
+            "required": false,
+            "value": "123456789, 987654321"
+        },
+        "MIN_TIMER": {
+            "description": "Minimal Timer in minutes",
+            "required": true,
+            "value": "2"
+        },
+        "MAX_TIMER": {
+            "description": "Maximum Timer in minutes",
+            "required": true,
+            "value": "5"
+        }
+    },
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        },
+        "web": {
+            "quantity": 0,
+            "size": "free"
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ]
+}

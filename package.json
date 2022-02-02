@@ -1,17 +1,33 @@
 {
-  "name": "t-zero",
+  "name": "cero",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "CERO is an play-to-earn RPG game (bot) for discord.",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production node app.js",
+    "dev": "NODE_ENV=development node app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "contributors": [
+    "Sajawal Fareedi <sajawalfareedi448@gmail.com>"
+  ],
+  "license": "MIT",
   "dependencies": {
-    "@discordjs/rest": "^0.2.0-canary.0",
-    "discord-api-types": "^0.26.1",
-    "discord.js": "^13.6.0"
+    "bluebird": "^3.5.5",
+    "bunyan": "^1.8.12",
+    "bunyan-rotating-file-stream": "^1.6.3",
+    "cron": "^1.7.1",
+    "discord.js": "^12.5.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mongoose": "^5.7.7",
+    "querystring": "^0.2.0",
+    "seedrandom": "^2.4.4"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.17.3"
   }
 }
