@@ -199,9 +199,10 @@ class Game extends aggregation(BaseGame, BaseHelper) {
   }
 
   fetchCommand(params) {
-    return this.Commands[params.command](
-      Object.assign({}, params, { canJoinLottery: this.canJoinLottery })
-    );
+    return this.Commands[params.command]({
+      ...params,
+      canJoinLottery: this.canJoinLottery,
+    });
   }
 
   disableJoinLottery() {

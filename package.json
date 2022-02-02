@@ -5,29 +5,26 @@
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=production node app.js",
-    "dev": "NODE_ENV=development node app.js"
+    "dev": "NODE_ENV=development nodemon app.js"
   },
   "contributors": [
     "Sajawal Fareedi <sajawalfareedi448@gmail.com>"
   ],
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^3.5.5",
-    "bunyan": "^1.8.12",
-    "bunyan-rotating-file-stream": "^1.6.3",
-    "cron": "^1.7.1",
-    "discord.js": "^12.5.3",
-    "dotenv": "^4.0.0",
-    "express": "^4.17.1",
-    "moment": "^2.24.0",
-    "mongoose": "^5.7.7",
+    "bluebird": "^3.7.2",
+    "bunyan": "^1.8.15",
+    "bunyan-rotating-file-stream": "^2.0.0",
+    "cron": "^1.8.2",
+    "discord.js": "^13.6.0",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "moment": "^2.29.1",
+    "mongoose": "^6.1.10",
     "querystring": "^0.2.0",
-    "seedrandom": "^2.4.4"
+    "seedrandom": "^3.0.5"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.17.3"
+    "nodemon": "^2.0.15"
   }
 }

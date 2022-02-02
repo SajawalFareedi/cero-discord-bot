@@ -1,18 +1,17 @@
-const { CronJob } = require('cron');
-const { cronLog } = require('../../utils/logger');
+const { CronJob } = require("cron");
+const { cronLog } = require("../../utils/logger");
 
 class Crons {
-
   constructor(params) {
     const { Discord } = params;
     this.Discord = Discord;
-    this.powerHourWarnTime = '00 30 13 * * 0-6'; // 1pm every day
-    this.disableJoinLotteryTime = '00 45 9 * * 0-6';
-    this.dailyLotteryTime = '00 00 10 * * 0-6';
-    this.enableJoinLotteryTime = '00 05 10 * * 0-6';
-    this.blizzardRandomTime = '00 00 9 * * 0-6';
-    this.leadboardUpdateTime = '00 */10 * * * 0-6';
-    this.timeZone = 'America/Los_Angeles';
+    this.powerHourWarnTime = "00 30 13 * * 0-6"; // 1pm every day
+    this.disableJoinLotteryTime = "00 45 9 * * 0-6";
+    this.dailyLotteryTime = "00 00 10 * * 0-6";
+    this.enableJoinLotteryTime = "00 05 10 * * 0-6";
+    this.blizzardRandomTime = "00 00 9 * * 0-6";
+    this.leadboardUpdateTime = "00 */10 * * * 0-6";
+    this.timeZone = "America/Los_Angeles";
   }
 
   loadCrons() {
@@ -24,7 +23,7 @@ class Crons {
       },
       start: false,
       timeZone: this.timeZone,
-      runOnInit: false
+      runOnInit: false,
     }).start();
 
     new CronJob({
@@ -35,7 +34,7 @@ class Crons {
       },
       start: false,
       timeZone: this.timeZone,
-      runOnInit: false
+      runOnInit: false,
     }).start();
 
     new CronJob({
@@ -46,7 +45,7 @@ class Crons {
       },
       start: false,
       timeZone: this.timeZone,
-      runOnInit: false
+      runOnInit: false,
     }).start();
 
     new CronJob({
@@ -57,7 +56,7 @@ class Crons {
       },
       start: false,
       timeZone: this.timeZone,
-      runOnInit: false
+      runOnInit: false,
     }).start();
 
     new CronJob({
@@ -68,7 +67,7 @@ class Crons {
       },
       start: false,
       timeZone: this.timeZone,
-      runOnInit: false
+      runOnInit: false,
     }).start();
 
     new CronJob({
@@ -79,9 +78,8 @@ class Crons {
       },
       start: false,
       timeZone: this.timeZone,
-      runOnInit: false
+      runOnInit: false,
     }).start();
   }
-
 }
 module.exports = Crons;

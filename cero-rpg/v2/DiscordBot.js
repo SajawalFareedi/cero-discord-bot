@@ -1,14 +1,14 @@
 // BASE
+const DiscordJS = require("discord.js");
+const fs = require("fs");
 const BaseHelper = require("./Base/Helper");
 const BaseDiscord = require("./Base/Discord");
 
-const DiscordJS = require("discord.js");
 // const util = require('util');
-const fs = require("fs");
 
 // DATA
-const Crons = require("../v2/cero-rpg/Crons");
-const Game = require("../v2/cero-rpg/Game");
+const Crons = require("./cero-rpg/Crons");
+const Game = require("./cero-rpg/Game");
 const Antispam = require("../bots/modules/Antispam");
 const CommandParser = require("../bots/utils/CommandParser");
 const enumHelper = require("../utils/enumHelper");
@@ -79,16 +79,11 @@ class DiscordBot extends BaseHelper {
               member.presence.status !== "offline" &&
               this.Game.dbClass().shouldBeInList(member.id, member.guild.id)
           )
-          .map((member) =>
-            Object.assign(
-              {},
-              {
-                name: member.nickname ? member.nickname : member.displayName,
-                discordId: member.id,
-                guildId: guild.id,
-              }
-            )
-          )
+          .map((member) => ({
+            name: member.nickname ? member.nickname : member.displayName,
+            discordId: member.id,
+            guildId: guild.id,
+          }))
           .forEach((member) =>
             this.onlinePlayers.set(member.discordId + member.guildId, member)
           );
@@ -144,16 +139,11 @@ class DiscordBot extends BaseHelper {
             member.presence.status !== "offline" &&
             this.Game.dbClass().shouldBeInList(member.id, member.guild.id)
         )
-        .map((member) =>
-          Object.assign(
-            {},
-            {
-              name: member.nickname ? member.nickname : member.displayName,
-              discordId: member.id,
-              guildId: guild.id,
-            }
-          )
-        )
+        .map((member) => ({
+          name: member.nickname ? member.nickname : member.displayName,
+          discordId: member.id,
+          guildId: guild.id,
+        }))
         .forEach((member) =>
           this.onlinePlayers.set(member.discordId + member.guildId, member)
         );
@@ -282,16 +272,11 @@ class DiscordBot extends BaseHelper {
               (member) =>
                 !member.user.bot && member.presence.status !== "offline"
             )
-            .map((member) =>
-              Object.assign(
-                {},
-                {
-                  name: member.nickname ? member.nickname : member.displayName,
-                  discordId: member.id,
-                  guildId: guild.id,
-                }
-              )
-            );
+            .map((member) => ({
+              name: member.nickname ? member.nickname : member.displayName,
+              discordId: member.id,
+              guildId: guild.id,
+            }));
 
           if (guildOnlineMembers.size >= 50) {
             guildMinTimer =
@@ -358,7 +343,7 @@ class DiscordBot extends BaseHelper {
         `${
           process.env.NODE_ENV.includes("production")
             ? this.onlinePlayers.size
-            : enumHelper.mockPlayers.length + " mock"
+            : `${enumHelper.mockPlayers.length} mock`
         } idlers in ${this.bot.guilds.cache.size} guilds`,
         { type: "WATCHING" }
       );
@@ -565,7 +550,7 @@ class DiscordBot extends BaseHelper {
         (channel) =>
           channel &&
           channel.name === "leaderboards" &&
-          channel.type === "text" /*&& channel.parent.name === 'cero-rpg'*/
+          channel.type === "text" /* && channel.parent.name === 'cero-rpg' */
       );
       if (
         !leaderboardChannel ||
