@@ -4,8 +4,10 @@
   "description": "CERO is an play-to-earn RPG game (bot) for discord.",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
-    "dev": "NODE_ENV=development nodemon app.js"
+    "start": "concurrently \"NODE_ENV=production node app.js\" \"node app\\server.js\"",
+    "dev": "concurrently \"NODE_ENV=development nodemon app.js\" \"nodemon app\\server.js\"",
+    "web": "nodemon app\\server.js",
+    "game": "\"NODE_ENV=development nodemon app.js\""
   },
   "contributors": [
     "Sajawal Fareedi <sajawalfareedi448@gmail.com>"
@@ -15,6 +17,8 @@
     "bluebird": "^3.7.2",
     "bunyan": "^1.8.15",
     "bunyan-rotating-file-stream": "^2.0.0",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
     "cron": "^1.8.2",
     "discord.js": "^13.6.0",
     "dotenv": "^15.0.0",
