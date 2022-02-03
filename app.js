@@ -1,3 +1,4 @@
+process.env.NODE_ENV = "development";
 require("dotenv").config();
 const fs = require("fs");
 
@@ -15,7 +16,7 @@ console.log(
       : "Running Development Env"
   }`
 );
-// const DiscordBot = require('./cero-rpg/v2/DiscordBot');
+require("./cero-rpg/v2/DiscordBot");
 const { errorLog } = require("./cero-rpg/utils/logger");
 
 process.on("unhandledRejection", (err) => {

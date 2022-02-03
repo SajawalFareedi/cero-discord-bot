@@ -1,26 +1,25 @@
-const http = require('http');
-const https = require('https');
+const http = require("http");
+const https = require("https");
 
 class Requester {
-
   request(options) {
     return new Promise((resolve, reject) => {
       console.log(options);
-      const port = options.port === 443 ? https : http;
-      const req = port.request(options, (res) => {
-        let output = '';
-        res.setEncoding('utf8');
+      const protocol = options.port === 443 ? https : http;
+      const req = protocol.request(options, (res) => {
+        let output = "";
+        res.setEncoding("utf8");
 
-        res.on('data', (chunk) => {
+        res.on("data", (chunk) => {
           output += chunk;
         });
 
-        res.on('end', () => {
+        res.on("end", () => {
           return resolve(JSON.parse(output));
         });
       });
 
-      req.on('error', (err) => {
+      req.on("error", (err) => {
         return reject(err);
       });
 
@@ -31,6 +30,5 @@ class Requester {
       req.end();
     });
   }
-
 }
 module.exports = new Requester();

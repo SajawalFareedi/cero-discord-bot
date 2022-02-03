@@ -7,7 +7,7 @@ class Discord {
   }
 
   loadGuilds() {
-    console.log("Idle RPG is loading guilds");
+    console.log("CERO is loading guilds");
     this.bot.guilds.cache.forEach(async (guild) => {
       this.manageGuildChannels(guild);
     });

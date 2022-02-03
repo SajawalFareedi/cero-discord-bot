@@ -17,46 +17,33 @@ const commands = [
     function: (params) => {
       const { messageObj } = params;
       const helpMsg = `You can private message me these commands except for checking other players!
-!top10 - Retrieves top 10 highest level players
-!top10 <gold, spells, level, stolen, stole, gambles, events, bounty> - Retrieves top 10 highest of selected section
-!rank <gold, spells, level, stolen, stole, gambles, events, bounty> - Returns your current rank of selected section
-!s, !stats - Sends a PM with your stats
 !s, !stats <@Mention of player> - Sends a PM with the players stats (without < > and case-sensitive)
 !e, !equip - Sends a PM with your equipment
 !e, !equip <@Mention of player> - Sends a PM with the players equipment (without < > and case-sensitive)
 !c, !char, !character - Sends PM with your stats and equipment
 !c, !char, !character <@Mention of player> - Sends a PM with the players equipment and stats (without < > and case-sensitive)
-!m, !map - Displays the worlds locations
-!multi, !multiplier - Displays current multiplier
 !cs, !castspell - Lists spells available to cast
 !cs, !castspell <spell> - Casts a global spell onto cero-rpg
 !t, !titles - Lists current unlocked titles
-!st, !settitle <title> - Sets your title to <title> (without < > and case-sensitive)
 !el, !eventlog - Lists up to 15 past events
 !el, !eventlog <@Mention of player> - Lists up to 15 past events of mentioned player
-!pl, !pvplog - Lists up to 15 past PvP events
-!pl, !pvplog <@Mention of player> - Lists up to 15 past PvP events of mentioned player
-!nq, !newquest - Changes the quest mob if quest has not been updated for more than 2 days
-!se, !stolenequip <@Mention of player> - Lists players stolen equipment
-!mention <on|off|action|move> - Change if events relating to you will @Mention you
-!pm <on|off|filtered> - Change if events relating to you will be private messaged to you
-!gender <male|female|neutral|neuter> - Change your character's gender
-!lottery - Joins Daily Lottery (100 gold for entry)
-!prizepool - Displays how many players have joined the lottery and the prize pool
-!lore <Map Name> - Retrieves the lore of map selected
-!b, !bounty <@Mention of player> <Bounty Amount> - Puts a bounty on the death of a player
 !sb, !spellbook - Returns list of spells your character has learned
 !i, !inv, !inventory - Displays what your character has in his/her inventory
 !invite - Sends you invite to the official server
 !setserver <Server ID> - Sets primary server (If your in more than one server that contains this bot).
 !bugreport <Message> - Sends a bug report message to the official server.
-!patreon - Sends patreon link to show your support!
-!prefix <Command prefix to use> - Changes server command prefix (Must have Manage Guild permission to use) eg: !prefix ?
-!prefix <Server ID> <Command prefix to use> - Changes server command prefix (Must have Manage Guild permission to use) eg: !prefix 1111 ?`;
+!patreon - Sends patreon link to show your support!`;
       messageObj.author.send(helpMsg, { split: true });
     },
   }),
-
+  (ping = {
+    command: "!ping",
+    operatorOnly: false,
+    function: (params) => {
+      const { messageObj } = params;
+      messageObj.reply("<:emoji_2:938819097536397423>");
+    },
+  }),
   // Lists titles
   (titles = {
     command: ["!t", "!titles"],
@@ -70,7 +57,6 @@ const commands = [
       });
     },
   }),
-
   // Set title
   (setTitle = {
     command: ["!st", "!settitle"],
@@ -92,7 +78,6 @@ const commands = [
       });
     },
   }),
-
   (character = {
     command: ["!character", "!c", "!char"],
     operatorOnly: false,
@@ -139,7 +124,6 @@ const commands = [
       });
     },
   }),
-
   (inventory = {
     command: ["!inventory", "!inv", "!i"],
     operatorOnly: false,
@@ -201,7 +185,6 @@ const commands = [
       });
     },
   }),
-
   (resetQuest = {
     command: ["!newquest", "!nq"],
     operatorOnly: false,
@@ -215,7 +198,6 @@ const commands = [
       return messageObj.author.send(result);
     },
   }),
-
   (stats = {
     command: ["!stats", "!s"],
     operatorOnly: false,
@@ -244,7 +226,6 @@ const commands = [
       });
     },
   }),
-
   (equip = {
     command: ["!equip", "!e"],
     operatorOnly: false,
@@ -273,7 +254,6 @@ const commands = [
       });
     },
   }),
-
   (spellbook = {
     command: ["!spellbook", "!sb"],
     operatorOnly: false,
@@ -302,7 +282,6 @@ const commands = [
       });
     },
   }),
-
   (lottery = {
     command: ["!lottery"],
     operatorOnly: false,
@@ -316,7 +295,6 @@ const commands = [
       });
     },
   }),
-
   (prizePool = {
     command: ["!prizepool"],
     operatorOnly: false,
@@ -329,7 +307,6 @@ const commands = [
       });
     },
   }),
-
   (patreon = {
     command: ["!patreon"],
     operatorOnly: false,
@@ -343,7 +320,6 @@ const commands = [
       );
     },
   }),
-
   (multi = {
     command: ["!multiplier", "!multi"],
     operatorOnly: false,
@@ -356,7 +332,6 @@ const commands = [
       });
     },
   }),
-
   (setServer = {
     command: ["!setserver"],
     operatorOnly: false,
@@ -381,7 +356,6 @@ const commands = [
       );
     },
   }),
-
   (map = {
     command: ["!map", "!m"],
     operatorOnly: false,
@@ -398,7 +372,6 @@ const commands = [
       messageObj.author.send(`\`\`\`Map of cero-rpg:\n${mapInfo}\`\`\``);
     },
   }),
-
   (lore = {
     command: "!lore",
     operatorOnly: false,
@@ -427,7 +400,6 @@ const commands = [
       );
     },
   }),
-
   (bugreport = {
     command: "!bugreport",
     operatorOnly: false,
@@ -465,7 +437,6 @@ const commands = [
       );
     },
   }),
-
   (top10 = {
     command: "!top10",
     operatorOnly: false,
@@ -552,7 +523,6 @@ const commands = [
       }
     },
   }),
-
   (rank = {
     command: "!rank",
     operatorOnly: false,
@@ -639,7 +609,6 @@ const commands = [
       }
     },
   }),
-
   (castSpell = {
     command: ["!castspell", "!cs"],
     operatorOnly: false,
@@ -670,7 +639,6 @@ const commands = [
       return messageObj.author.send(spellsString.concat("```"));
     },
   }),
-
   (changeServerPrefix = {
     command: ["!prefix"],
     operatorOnly: false,
@@ -742,7 +710,6 @@ const commands = [
       }
     },
   }),
-
   /**
    * places a bounty on a specific player for a specific amount should work with @playername and then a gold amount
    */
@@ -789,7 +756,6 @@ const commands = [
       );
     },
   }),
-
   (eventLog = {
     command: ["!eventlog", "!el"],
     operatorOnly: false,
@@ -827,7 +793,6 @@ const commands = [
       });
     },
   }),
-
   (pvpLog = {
     command: ["!pvplog", "!pl"],
     operatorOnly: false,
@@ -865,7 +830,6 @@ const commands = [
       });
     },
   }),
-
   /**
    * Subscribe to PM messages
    */
@@ -896,7 +860,6 @@ const commands = [
       \`\`\``);
     },
   }),
-
   /**
    * Modify if player will be @Mentioned in events
    */
@@ -931,7 +894,6 @@ const commands = [
         \`\`\``);
     },
   }),
-
   /**
    * Modify player's gender
    */
@@ -966,7 +928,6 @@ const commands = [
         \`\`\``);
     },
   }),
-
   (getStolenEquip = {
     command: ["!stolenequip", "!se"],
     operatorOnly: false,
@@ -1009,7 +970,6 @@ const commands = [
       );
     },
   }),
-
   // Bot Operator commands
   (setPlayerBounty = {
     command: "!setbounty",
@@ -1030,7 +990,6 @@ const commands = [
       }
     },
   }),
-
   (setPlayerGold = {
     command: "!setgold",
     operatorOnly: true,
@@ -1050,7 +1009,6 @@ const commands = [
       }
     },
   }),
-
   (holidaysCommands = {
     command: "!holiday",
     operatorOnly: true,
@@ -1082,7 +1040,6 @@ const commands = [
       }
     },
   }),
-
   // Doesn't work for now.
   (activateBlizzard = {
     command: "!blizzard",
@@ -1111,7 +1068,6 @@ const commands = [
       }
     },
   }),
-
   (giveGold = {
     command: "!givegold",
     operatorOnly: true,
@@ -1132,7 +1088,6 @@ const commands = [
       }
     },
   }),
-
   (resetPlayer = {
     command: "!resetplayer",
     operatorOnly: true,
@@ -1148,7 +1103,6 @@ const commands = [
       }
     },
   }),
-
   (resetLottery = {
     command: "!resetLottery",
     operatorOnly: true,
@@ -1166,7 +1120,6 @@ const commands = [
       }
     },
   }),
-
   (removeLotteryPlayers = {
     command: "!resetLotteryPlayers",
     operatorOnly: true,
@@ -1184,7 +1137,6 @@ const commands = [
       }
     },
   }),
-
   (resetAll = {
     command: "!resetall",
     channelOnlyId: commandChannel,
@@ -1211,7 +1163,6 @@ const commands = [
       return message.author.send("You must specify a guild id to reset.");
     },
   }),
-
   (aprilFools = {
     command: "!aprilfools",
     operatorOnly: true,
@@ -1230,7 +1181,6 @@ const commands = [
       );
     },
   }),
-
   (invite = {
     command: "!invite",
     operatorOnly: false,
@@ -1245,7 +1195,6 @@ const commands = [
       );
     },
   }),
-
   // MODULE COMMANDS
   (giveEquipmentToPlayer = {
     command: "!giveplayer",
@@ -1266,7 +1215,6 @@ const commands = [
       }
     },
   }),
-
   (randomRepo = {
     command: "!ranrepo",
     function: async (params) => {
@@ -1280,7 +1228,6 @@ const commands = [
       );
     },
   }),
-
   // nextLaunch = {
   //   command: '!nextlaunch',
   //   operatorOnly: false,

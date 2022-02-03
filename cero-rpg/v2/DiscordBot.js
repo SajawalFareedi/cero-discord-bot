@@ -1,5 +1,6 @@
 // BASE
 const DiscordJS = require("discord.js");
+const { Client, Intents } = require("discord.js");
 const fs = require("fs");
 const BaseHelper = require("./Base/Helper");
 const BaseDiscord = require("./Base/Discord");
@@ -31,7 +32,8 @@ const { errorLog, welcomeLog, infoLog } = require("../utils/logger");
 class DiscordBot extends BaseHelper {
   constructor() {
     super();
-    this.bot = new DiscordJS.Client({
+    this.bot = new Client({
+      intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
       apiRequestMethod: "sequential",
       messageCacheMaxSize: 200,
       messageCacheLifetime: 0,
@@ -90,20 +92,9 @@ class DiscordBot extends BaseHelper {
       }, console.log("Reset all personal multipliers"));
     });
 
-    this.bot.on("message", async (message) => {
+    this.bot.on("messageCreate", async (message) => {
       if (message.author.bot) {
-        // Don't listen to bots. Even cero-rpg himself.
         return;
-      }
-
-      if (
-        message.guild &&
-        message.guild.id === guildID &&
-        message.content.includes("┻━┻")
-      ) {
-        return message.reply(
-          " ┬─┬ノ(ಠ\\_ಠノ)".repeat(message.content.split("┻━┻").length - 1)
-        );
       }
 
       if (
@@ -121,7 +112,7 @@ class DiscordBot extends BaseHelper {
         await Antispam.logMessage(message.author.id, message.content);
         const skip = await Antispam.checkMessageInterval(message);
         if (skip) {
-          // infoLog.info(`Spam detected by ${message.author.username}.`);
+          infoLog.info(`Spam detected by ${message.author.username}.`);
           return;
         }
       }

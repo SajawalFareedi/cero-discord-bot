@@ -3,3 +3,4 @@ node_modules/
 
 # General
 .env
+keys.js

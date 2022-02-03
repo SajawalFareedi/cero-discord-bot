@@ -211,7 +211,7 @@ discordBot.on("ready", () => {
   discordBot.user.setAvatar(fs.readFileSync("./cero-rpg/res/hal.jpg"));
   discordBot.user.setActivity("cero-rpg Game Master");
   discordBot.user.setStatus("idle");
-  console.log("Idle RPG has been loaded!");
+  console.log("CERO has been loaded!");
 
   game.updateLeaderboards(discordBot);
 
@@ -224,7 +224,7 @@ discordBot.on("error", (err) => {
   errorLog.error(err);
 });
 
-discordBot.on("message", async (message) => {
+discordBot.on("messageCreate", async (message) => {
   if (message.author.id === botID) {
     return;
   }
@@ -346,4 +346,4 @@ new CronJob({
   runOnInit: false,
 }).start();
 
-module.exports = discordBot;
+// module.exports = discordBot;

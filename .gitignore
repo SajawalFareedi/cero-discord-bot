@@ -2,6 +2,7 @@
 .vscode
 utils/local-database/players/
 package-lock.json
+keys.js
 
 # Logs
 *.log
