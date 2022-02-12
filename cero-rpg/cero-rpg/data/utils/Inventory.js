@@ -1,5 +1,5 @@
-const { inventory } = require('../../utils/enumHelper');
-const enumHelper = require('../../utils/enumHelper');
+const { inventory } = require('../../../utils/enumHelper');
+const enumHelper = require('../../../utils/enumHelper');
 
 class Inventory {
 

@@ -4,12 +4,12 @@ const BaseGame = require('../../../Base/Game');
 const BaseHelper = require('../../../Base/Helper');
 
 // UTILS
-const { errorLog } = require('../../../../utils/logger');
+const { errorLog } = require('../../../utils/logger');
 
 // DATA
-const { pvpLevelRestriction } = require('../../../../../settings');
-const enumHelper = require('../../../../utils/enumHelper');
-const BattleSimulator = require('../../../../game/utils/Battle');
+const { pvpLevelRestriction } = require('../../../../settings');
+const enumHelper = require('../../../utils/enumHelper');
+const BattleSimulator = require('../utils/Battle');
 
 class Battle extends aggregation(BaseGame, BaseHelper) {
 

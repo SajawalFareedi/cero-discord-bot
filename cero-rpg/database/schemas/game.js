@@ -10,7 +10,7 @@ const gameSchema = mongoose.Schema({
   },
   commandPrefix: {
     type: String,
-    default: '!'
+    default: 'c'
   },
   multiplier: {
     type: Number,

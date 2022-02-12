@@ -1,6 +1,6 @@
-const BaseHelper = require('../../v2/Base/Helper');
+const BaseHelper = require('../../../Base/Helper');
 
-const spells = require('../data/spells');
+const spells = require('../../data/spells');
 
 class Spell extends BaseHelper {
 

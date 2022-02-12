@@ -4,19 +4,19 @@ const BaseGame = require("../Base/Game");
 const BaseHelper = require("../Base/Helper");
 
 // DATA
-const { newQuest } = require("../../database/schemas/quest");
+const { newQuest } = require("../database/schemas/quest");
 const Commands = require("./data/Commands");
 const Events = require("./data/events/Events");
-const Monster = require("../../game/utils/Monster");
-const Item = require("../../game/utils/Item");
-const Map = require("../../game/utils/Map");
+const Monster = require("./data/utils/Monster");
+const Item = require("./data/utils/Item");
+const Map = require("./data/utils/Map");
 const titles = require("./data/titles");
 // eslint-disable-next-line no-unused-vars
-const { roamingNpcs, pmMode } = require("../../utils/enumHelper");
+const { roamingNpcs, pmMode } = require("../utils/enumHelper");
 
 // UTILS
-const Database = require("../../database/Database");
-const { errorLog } = require("../../utils/logger");
+const Database = require("../database/Database");
+const { errorLog } = require("../utils/logger");
 
 class Game extends aggregation(BaseGame, BaseHelper) {
   constructor() {
@@ -154,14 +154,14 @@ class Game extends aggregation(BaseGame, BaseHelper) {
     Prize Pool:${loadedConfig.dailyLottery.prizePool}
     Command Prefix:${loadedConfig.commandPrefix}
     Blizard:${loadedConfig.events.isBlizzardActive}\n`);
-    if (guildId !== "390509935097675777") {
-      this.guildCommandPrefixs.push({
-        id: loadedConfig.guildId,
-        prefix: loadedConfig.commandPrefix,
-      });
-    } else {
-      this.guildCommandPrefixs.push({ id: loadedConfig.guildId, prefix: "!" });
-    }
+    // if (guildId !== "390509935097675777") {
+    //   this.guildCommandPrefixs.push({
+    //     id: loadedConfig.guildId,
+    //     prefix: loadedConfig.commandPrefix,
+    //   });
+    // } else {
+    this.guildCommandPrefixs.push({ id: loadedConfig.guildId, prefix: "c" });
+    // }
     if (loadedConfig.events.isBlizzardActive) {
       setTimeout(() => {
         loadedConfig.events.isBlizzardActive = false;

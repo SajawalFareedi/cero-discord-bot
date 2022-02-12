@@ -4,11 +4,11 @@ const BaseGame = require('../../../Base/Game');
 const BaseHelper = require('../../../Base/Helper');
 
 // UTILS
-const { errorLog } = require('../../../../utils/logger');
+const { errorLog } = require('../../../utils/logger');
 
 // DATA
-const enumHelper = require('../../../../utils/enumHelper');
-const { maximumTimer } = require('../../../../../settings');
+const enumHelper = require('../../../utils/enumHelper');
+const { maximumTimer } = require('../../../../settings');
 
 class Luck extends aggregation(BaseGame, BaseHelper) {
 

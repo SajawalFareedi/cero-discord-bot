@@ -1,5 +1,5 @@
-const maps = require('../data/maps');
-const BaseHelper = require('../../v2/Base/Helper');
+const maps = require('../maps');
+const BaseHelper = require('../../../Base/Helper');
 
 const mapSize = maps[maps.length - 1].coords;
 

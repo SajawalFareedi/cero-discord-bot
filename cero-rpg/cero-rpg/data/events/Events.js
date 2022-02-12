@@ -2,15 +2,15 @@
 const BaseHelper = require('../../../Base/Helper');
 
 // UTILS
-const { errorLog } = require('../../../../utils/logger');
+const { errorLog } = require('../../../utils/logger');
 
 // DATA
-const enumHelper = require('../../../../utils/enumHelper');
+const enumHelper = require('../../../utils/enumHelper');
 const Town = require('./Town');
 const Battle = require('./Battle');
 const Luck = require('./Luck');
-const Spell = require('../../../../game/utils/Spell');
-const Inventory = require('../../../../game/utils/Inventory');
+const Spell = require('../utils/Spell');
+const Inventory = require('../utils/Inventory');
 
 class Events extends BaseHelper {
 

@@ -5,13 +5,13 @@ const BaseHelper = require("../../Base/Helper");
 
 // DATA
 const titles = require("./titles");
-const globalSpells = require("../../../game/data/globalSpells");
-const enumHelper = require("../../../utils/enumHelper");
+const globalSpells = require("./globalSpells");
+const enumHelper = require("../../utils/enumHelper");
 const holidays = require("./holidays");
-const { guildID } = require("../../../../settings");
+const { guildID } = require("../../../settings");
 
 // UTILS
-const { errorLog } = require("../../../utils/logger");
+const { errorLog } = require("../../utils/logger");
 
 class Commands extends aggregation(BaseGame, BaseHelper) {
   constructor(params) {

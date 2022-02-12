@@ -3,6 +3,7 @@
 utils/local-database/players/
 package-lock.json
 keys.js
+temp/
 
 # Logs
 *.log

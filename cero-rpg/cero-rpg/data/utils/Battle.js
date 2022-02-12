@@ -1,5 +1,5 @@
-const BaseHelper = require('../../v2/Base/Helper');
-const enumHelper = require('../../utils/enumHelper');
+const BaseHelper = require('../../../Base/Helper');
+const enumHelper = require('../../../utils/enumHelper');
 
 class Battle extends BaseHelper {
 

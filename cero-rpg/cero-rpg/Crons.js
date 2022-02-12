@@ -1,5 +1,5 @@
 const { CronJob } = require("cron");
-const { cronLog } = require("../../utils/logger");
+const { cronLog } = require("../utils/logger");
 
 class Crons {
   constructor(params) {

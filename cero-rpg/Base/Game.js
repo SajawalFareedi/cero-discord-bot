@@ -1,9 +1,9 @@
 // DATA
 const titles = require('../cero-rpg/data/titles');
-const enumHelper = require('../../utils/enumHelper');
+const enumHelper = require('../utils/enumHelper');
 
 // UTILS
-const { errorLog, infoLog } = require('../../utils/logger');
+const { errorLog, infoLog } = require('../utils/logger');
 
 class Game {
 

@@ -1,5 +1,5 @@
-const monsters = require('../data/monsters');
-const BaseHelper = require('../../v2/Base/Helper');
+const monsters = require('../monsters');
+const BaseHelper = require('../../../Base/Helper');
 
 class Monster extends BaseHelper {
 

@@ -1,27 +1,26 @@
 // BASE
 const DiscordJS = require("discord.js");
 const { Client, Intents } = require("discord.js");
-const fs = require("fs");
+// const fs = require("fs");
 const BaseHelper = require("./Base/Helper");
 const BaseDiscord = require("./Base/Discord");
-
-// const util = require('util');
+// const util = require("util");
 
 // DATA
 const Crons = require("./cero-rpg/Crons");
 const Game = require("./cero-rpg/Game");
-const Antispam = require("../bots/modules/Antispam");
-const CommandParser = require("../bots/utils/CommandParser");
-const enumHelper = require("../utils/enumHelper");
+// const Antispam = require("./modules/Antispam");
+const CommandParser = require("./utils/CommandParser");
+const enumHelper = require("./utils/enumHelper");
 const {
   minimalTimer,
   maximumTimer,
   botLoginToken,
   guildID,
-} = require("../../settings");
+} = require("../settings");
 
 // UTILS
-const { errorLog, welcomeLog, infoLog } = require("../utils/logger");
+const { errorLog, welcomeLog, infoLog } = require("./utils/logger");
 
 /*
 
@@ -63,12 +62,12 @@ class DiscordBot extends BaseHelper {
   loadEventListeners() {
     this.bot.on("error", (err) => errorLog.error(err));
     this.bot.once("ready", () => {
-      if (!this.bot.user.avatarURL) {
-        // avatarURL == null if not set
-        this.bot.user.setAvatar(fs.readFileSync("./cero-rpg/res/hal.jpg"));
-      }
+      // if (!this.bot.user.avatarURL) {
+      // avatarURL == null if not set
+      // this.bot.user.setAvatar(fs.readFileSync("./cero-rpg/res/hal.jpg"));
+      // }
       this.bot.user.setStatus("idle");
-      this.discord.loadGuilds();
+      // this.discord.loadGuilds();
       this.loadHeartBeat();
       this.Crons.loadCrons();
 
@@ -104,18 +103,18 @@ class DiscordBot extends BaseHelper {
         return;
       }
 
-      if (
-        message.content.startsWith("!cs") ||
-        message.content.startsWith("!castspell")
-      ) {
-        await Antispam.logAuthor(message.author.id);
-        await Antispam.logMessage(message.author.id, message.content);
-        const skip = await Antispam.checkMessageInterval(message);
-        if (skip) {
-          infoLog.info(`Spam detected by ${message.author.username}.`);
-          return;
-        }
-      }
+      // if (
+      //   message.content.startsWith("ccs") ||
+      //   message.content.startsWith("ccastspell")
+      // ) {
+      //   await Antispam.logAuthor(message.author.id);
+      //   await Antispam.logMessage(message.author.id, message.content);
+      //   const skip = await Antispam.checkMessageInterval(message);
+      //   if (skip) {
+      //     infoLog.info(`Spam detected by ${message.author.username}.`);
+      //     return;
+      //   }
+      // }
 
       return this.CommandParser.parseUserCommand(message);
     });
@@ -331,11 +330,12 @@ class DiscordBot extends BaseHelper {
         }
       });
       this.bot.user.setActivity(
-        `${
-          process.env.NODE_ENV.includes("production")
-            ? this.onlinePlayers.size
-            : `${enumHelper.mockPlayers.length} mock`
-        } idlers in ${this.bot.guilds.cache.size} guilds`,
+        "nothing :)",
+        // `${
+        //   process.env.NODE_ENV.includes("production")
+        //     ? this.onlinePlayers.size
+        //     : `${enumHelper.mockPlayers.length} mock`
+        // } idlers in ${this.bot.guilds.cache.size} guilds`,
         { type: "WATCHING" }
       );
     }, 60000 * interval);

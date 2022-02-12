@@ -1,6 +1,6 @@
-const items = require('../data/items');
-const enumHelper = require('../../utils/enumHelper');
-const BaseHelper = require('../../v2/Base/Helper');
+const items = require('../items');
+const enumHelper = require('../../../utils/enumHelper');
+const BaseHelper = require('../../../Base/Helper');
 
 class Item extends BaseHelper {
 

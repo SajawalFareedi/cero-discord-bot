@@ -1,8 +1,8 @@
-const commands = require("../data/commands");
-const { botOperators } = require("../../../settings");
-const { commandLog, errorLog } = require("../../utils/logger");
+const commands = require("./commands");
+const { botOperators } = require("../../settings");
+const { commandLog, errorLog } = require("../utils/logger");
 const moment = require("moment");
-const BaseHelper = require("../../v2/Base/Helper");
+const BaseHelper = require("../Base/Helper");
 
 const commandList = commands
   .map((c) => c.command)
@@ -41,9 +41,9 @@ class CommandParser extends BaseHelper {
         return;
       }
       const command = messageObj.content
-        .replace(guildPrefix === "!irpg" ? "!irpg " : guildPrefix, "!")
+        .replace(guildPrefix === "cirpg" ? "cirpg " : guildPrefix, "c")
         .split(/ (.+)/)[0];
-      if (messageObj.content.startsWith("!irpg")) {
+      if (messageObj.content.startsWith("cirpg")) {
         messageObj.content = messageObj.content.split(/ (.+)/)[1];
       }
       const authorId = messageObj.author.id;

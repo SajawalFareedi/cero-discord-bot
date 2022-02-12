@@ -4,10 +4,10 @@ const BaseGame = require('../../../Base/Game');
 const BaseHelper = require('../../../Base/Helper');
 
 // UTILS
-const { errorLog } = require('../../../../utils/logger');
+const { errorLog } = require('../../../utils/logger');
 
 // DATA
-const enumHelper = require('../../../../utils/enumHelper');
+const enumHelper = require('../../../utils/enumHelper');
 
 class Town extends aggregation(BaseGame, BaseHelper) {
 
